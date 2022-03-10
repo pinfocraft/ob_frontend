@@ -1,0 +1,63 @@
+.topbar-section {
+    height: 50px;
+    width: calc(100% - 80px);
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    z-index: 999;
+}
+
+.topbar-section .topbar {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.topbarleft .brandLogo img {
+    height: 17px;
+    width: auto;
+}
+
+.topbar-right ul {
+    display: flex;
+    align-items: center;
+    margin: 0 !important;
+}
+
+.topbar-right ul li {
+    list-style: none;
+    margin-left: 30px;
+}
+
+.topbar-right ul li a {
+    color: #181746;
+    font-size: 14px !important;
+    text-decoration: none;
+  
+}
+
+
+
+.topbar-right ul .bm-style span {
+    background: #F5F6FA;
+    border: 1px solid #E2E1FF;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    text-align: center;
+    padding: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-right: 5px;
+}

@@ -1,0 +1,33 @@
+.incdec-wrapper{
+    display: flex;
+    border: 2px solid #F3F3FF;
+    height: 22px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.incdec-wrapper button{
+    
+    background-color: #F3F3FF;
+    border: none;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 0 5px;
+    border: none;
+    outline: none;
+
+}
+.incdec-wrapper input{
+    width: 20px;
+    border: none;
+    outline: none;
+    
+}
+
+.incdec-wrapper input[type="text"]{
+    font-size: 10px;
+    text-align: center;
+}

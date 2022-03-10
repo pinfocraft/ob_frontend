@@ -1,0 +1,10 @@
+.boq-listing-content{
+    position: absolute;
+    top: 50px;
+   left: 80px;
+   padding: 10px 35px;
+   width: calc(100% - 80px);
+   overflow-y: scroll ;
+   background-color: var(--color-light);
+   height: calc(100% - 50px);
+}

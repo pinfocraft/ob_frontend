@@ -1,0 +1,19 @@
+.deafult-button {
+    color: #ffff;
+    font-weight: 600;
+    font-size: 12px;
+    background-color: #5855BC;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    height: 49px;
+    border: 2px solid var(--color-violet);
+}
+.deafult-button.btn-small{
+    height: 35px;
+}

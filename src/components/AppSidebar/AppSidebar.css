@@ -1,0 +1,31 @@
+.app-sidebar {
+    width: 80px;
+    height: 100vh;
+    background: var(--color-blue);
+    position: fixed;
+    left: 0;
+    top: 0;
+
+}
+
+.app-sidebar-logo {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.app-sidebar-logo img {
+    height: 45px;
+    width: auto;
+}
+
+.app-sidebar-menu ul{
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center;
+ margin-top: 20px;
+}
+
+.app-sidebar-menu ul li{
+    margin-top: 15px;
+}

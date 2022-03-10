@@ -1,0 +1,53 @@
+.cabin-card {
+    margin:10px  ;
+}
+
+.cabin-card .cabin-header{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.cabin-card .cabin-header span h5{
+font-size: 12px;
+color: var(--color-blue);
+}
+
+.cabin-card .cabin-header span i{
+    font-size: 12px;
+    color: var(--color-blue);
+    }
+
+.cabin-card  .cabin-styleList{
+ list-style: none;
+
+}
+
+.cabin-card  .cabin-styleList li{ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+} 
+
+.cabin-card  .cabin-styleList li:first-child{
+    margin-top: 0;
+}
+
+.cabin-card  .cabin-styleList li span{
+ font-size: 10px;
+}
+
+.cabin-card  .cabin-styleList li span:first-child{
+   color:  var(--color-black);
+   font-weight: 600;
+   }
+
+.cabin-card  .cabin-styleList li span:last-child{
+color: var(--color-text)
+
+}
+
+.cabin-card  .dropdown-toggle::after{
+    content: none;
+}

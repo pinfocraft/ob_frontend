@@ -1,0 +1,13 @@
+nav .breadcrumb li{
+    font-size: 12px;
+    color: var(--color-text) !important;
+    font-weight: 600;
+    color: var( --color-violet) !important;
+  }
+
+nav .breadcrumb li a{
+  font-size: 12px;
+  color: var(--color-text) !important;
+  font-weight: 600;
+  text-decoration: none;
+}

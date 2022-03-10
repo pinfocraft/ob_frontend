@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --color-blue: #181746;
+    --color-white: #fff;
+    --color-black: #000000;
+    --color-light: #E5E5E5;
+    --color-text: #6C6B6B;
+    --color-orange: #E77638;
+    --color-violet: #5855BC;
+    --color-border: #E2E1FF;
+    --color-placeholder : #c2c2c2;
+     --color-card : #F5F6FA;
+     --color-sky-blue : #E2E8FE;
+     --color-stripes : #F4F7FC;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+/* ===================  layout css  start ============================= */
+.mainContent{
+    margin: 50px auto auto 80px;
+}
+
+
+ul, ol{
+margin: 0;
+padding: 0 !important;
+}
+

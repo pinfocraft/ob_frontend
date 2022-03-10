@@ -1,0 +1,156 @@
+.signIn-section {
+    min-width: 100%;
+    background-color: #E5E5E5;
+    height: 100vh;
+    /* min-height: 100%; */
+    z-index: 0;
+}
+
+.sigin-page-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.sigin-page-logo img {
+    width: 202px;
+    height: auto;
+}
+
+.signin-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.signin-card-style {
+    padding: 20px 30px 20px 20px;
+    width: 500px;
+}
+
+.signin-card-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #181746;
+}
+
+.signin-card-header p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.signin-card-form {
+    margin-top: 30px;
+}
+
+.signin-card-form .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.signin-card-form .input-group>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signin-card-form .input-group>div span a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #E77638;
+    font-weight: 600;
+}
+
+.signin-card-form .input-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #181818;
+    margin-bottom: 8px;
+}
+
+.signin-card-form .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #6C6B6B;
+}
+
+.button-group,
+.input-group {
+    margin-top: 30px !important;
+}
+
+.signin-card-footer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.signin-card-footer p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6C6B6B;
+}
+
+.signin-card-footer p a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #E77638;
+}
+
+.below-footer {
+    margin-top: 40px;
+}
+
+.below-footer .or-footer {
+    font-size: 12px;
+    font-weight: 700;
+    color: #B6C6E3;
+    position: relative;
+}
+
+.below-footer .or-footer::after {
+    content: "";
+    height: 1px;
+    width: 20px;
+    display: block;
+    background-color: #B6C6E3;
+    position: absolute;
+    left: 41%;
+    bottom: 6px;
+}
+
+.below-footer .or-footer::before {
+    content: "";
+    height: 1px;
+    width: 20px;
+    display: block;
+    background-color: #B6C6E3;
+    position: absolute;
+    left: 54%;
+    bottom: 6px;
+}
+
+.below-footer p {
+    font-size: 10px;
+    font-weight: 400;
+    color: #6C6B6B;
+    margin-top: 20px;
+}
+
+.reserved-right {
+    color: #9B9B9B;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.signIn-background {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+.signIn-background img {
+    width: 60%;
+}

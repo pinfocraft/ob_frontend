@@ -1,0 +1,85 @@
+section.sidebar-section{
+    width: 230px;
+    height: calc(100vh - 50px);
+    overflow: auto;
+    padding: 20px 10px;
+    background-color: var(--color-white);
+    position: fixed;
+}
+
+.sidebar-heading{
+    font-size: 13px;
+    text-transform: capitalize;
+    color: #5855BC;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+section.sidebar-section .sidebar-accordion .accordion-body{
+    padding: 10px 5px 0px 5px !important;
+}
+
+section.sidebar-section .sidebar-accordion .accordion-button{
+ background-color: #fff !important;
+ font-size: 13px;
+ color: #181746;
+ font-weight: 600;
+ padding: 5px;
+ display: flex;
+ justify-content: space-between;
+
+}
+
+section.sidebar-section .sidebar-accordion .accordion-button span i {
+    margin-right: 5px;
+}
+
+section.sidebar-section .sidebar-accordion .accordion-item{
+    border: none !important;
+    margin-top: 15px;
+}
+
+section.sidebar-section .sidebar-accordion .accordion-button:focus{
+    box-shadow: none;
+}
+
+section.sidebar-section .sidebar-accordion .accordion-button:not(.collapsed){
+    box-shadow: none !important;
+}
+
+section.sidebar-section .sidebar-accordion .accordion-button::after{
+    content: none;
+}
+
+section.sidebar-section .sidebar-accordion .form-check-label{
+    font-size: 12px;
+    color: var(--color-violet);
+}
+
+section.sidebar-section  .form-check-input:checked{
+    background-color: var(--color-violet) !important;
+    border-color: var(--color-violet) !important;
+    
+}
+
+section.sidebar-section .sidebar-accordion ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+section.sidebar-section .sidebar-accordion ul li{
+    font-size: 12px;
+    color: var(--color-violet);
+    font-size: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+
+}
+
+section.sidebar-section .sidebar-accordion ul li:first-child{
+margin-top:0px ;
+}
+

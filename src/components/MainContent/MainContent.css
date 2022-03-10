@@ -1,0 +1,73 @@
+.mainContent-section{
+  position: absolute;
+  top: 50px;
+ left: 320px;
+ padding: 10px 35px;
+ width: calc(100% - 320px);
+ overflow-y: scroll ;
+ background-color: var(--color-light);
+ height: calc(100% - 50px);
+ 
+}
+
+/* tabs coustom css style  */
+
+.nav-tabs .nav-link{
+  font-size: 13px !important;
+  color: var(--color-text);
+  font-weight: 600;
+  border: none;
+ padding-left:25px !important ;
+  
+}
+
+.nav-tabs .nav-link:first-child{
+margin-left: 0 !important;
+}
+
+
+/* when tab active   */
+.nav-tabs-style .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+ border: none;
+ border-bottom: 3px solid var(--color-violet);
+ color: var(--color-violet);
+}
+
+.nav-tabs-style  .nav-link span{
+  margin-left: 10px;
+}
+
+.requirement-cabin-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  
+}
+
+.accordion-item:first-of-type .accordion-button{
+  background-color:  #F5F6FA !important;
+  outline: none;
+  padding: 10px 30px;
+  color: var(--color-blue);
+  font-size: 13px;
+  font-weight: 700;
+  
+}
+
+.accordion-item:first-of-type .accordion-button span{
+ color: var(--color-violet);
+ font-weight: 600;
+ margin-left: 15px;
+}
+.accordion-item:last-of-type .accordion-collapse{
+  background-color:  #F5F6FA !important;
+}
+.accordion-button:not(.collapsed){
+box-shadow: none;
+}
+
+.accordion-body{
+  padding: 0rem 1.25rem;
+}
+
+

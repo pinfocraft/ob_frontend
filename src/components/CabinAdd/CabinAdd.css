@@ -1,0 +1,16 @@
+.cabin-add-content {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.cabin-add-content button {
+background-color: var(--color-violet);
+border: none;
+outline: none;
+height: 32px;
+width: 145px;
+font-size: 11px;
+color: var(--color-white);
+font-weight: 500;
+}

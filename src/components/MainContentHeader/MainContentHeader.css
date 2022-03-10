@@ -1,0 +1,30 @@
+.MainContentHeader-section .MainContentHeader-heading{
+    font-size: 28px;
+    color: var(--color-blue);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.MainContentHeader-section .MainContentHeader-para{
+ font-size: 12px;
+ color: var(--color-text);
+ font-size: 700;
+ margin-bottom: 10px;
+}
+
+.MainContentHeader-section .MainContentHeader-ids{
+    display: flex;
+   
+}
+
+.MainContentHeader-section .MainContentHeader-ids span{
+    font-size: 12px;
+    color: var(--color-violet);
+    font-weight: 700;
+    padding-bottom: 15px;
+
+}
+
+.MainContentHeader-section .MainContentHeader-ids span:last-child{
+margin-left: 20px;
+}

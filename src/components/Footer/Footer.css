@@ -1,0 +1,26 @@
+.footer-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-white);
+    padding: 20px 10px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 80px);
+  
+}
+
+.footer-section .footer-left-sec{
+flex: 1;
+}
+
+.footer-section .footer-right-sec{
+ flex: 1;
+}
+
+.footer-section .footer-right-sec{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
