@@ -72,7 +72,7 @@ export default function BoqUserGroup() {
       if (!!result && !!result.ok) {
         console.log(result);
         if (result.ok) {
-          window.location.href = "/user";
+          window.location.href = "/userlist";
         } else {
           console.log("err");
         }
@@ -284,7 +284,7 @@ export default function BoqUserGroup() {
       {/* footer  */}
       <div className="row">
         <div className="col-12">
-          <Footer />
+          {/*<Footer />*/}
         </div>
       </div>
     </>

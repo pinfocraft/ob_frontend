@@ -10,6 +10,9 @@ import ForgotPassword from './pages/auth/ForgotPassword/ForgotPassword';
 import ChangePassword from './pages/auth/ChangePassword/ChangePassword';
 import UserList from './pages/User/UserList';
 import BoqUserGroup from './pages/User/UserGroup';
+import Dashboard from './pages/auth/Dashboard';
+import LeadList from './pages/auth/LeadList';
+import BoqList from './pages/auth/BoqList';
 import { UserContextProvider } from '../src/Util/UserProvider';
 import { BlockContextProvider } from '../src/Util/ListProvider';
 
@@ -25,9 +28,12 @@ function App() {
         {/*----------------------- User Auth end--------------------- */}
         <UserContextProvider>
           <BlockContextProvider>
-            <Route path="/user" component={UserList} />
+            <Route path="/userlist" component={UserList} />
+            <Route path="/lead-listing" component={LeadList} />
+            <Route path="/boq-listing" component={BoqList} />
             <Route path="/create-boq" component={CreateBOQ} />
-            <Route exact path="/" component={BoqUserGroup} />
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/Dashboard" component={Dashboard} />
             <Route path="/create-group" component={BoqUserGroup} />
           </BlockContextProvider>
         </UserContextProvider>

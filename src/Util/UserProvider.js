@@ -23,11 +23,11 @@ const UserContextProvider = ({ children }) => {
 			setSentinel(true);
 			result.json().then(
 				(payload) => {
-					dispatch({ type: 'setFirstname', firstname: payload[0].firstname });
-					dispatch({ type: 'setLastname', lastname: payload[0].lastname });
-					dispatch({ type: 'setUsername', username: payload[0].username });
-					dispatch({ type: 'setEmail', email: payload[0].email });
-					dispatch({ type: 'setRoles', roles: payload[0].roles });
+					dispatch({ type: 'setFirstname', firstname: payload.firstname });
+					dispatch({ type: 'setLastname', lastname: payload.lastname });
+					dispatch({ type: 'setUsername', username: payload.username });
+					dispatch({ type: 'setEmail', email: payload.email });
+					dispatch({ type: 'setRoles', roles: payload.roles });
 				},
 				(err) => {
 				}

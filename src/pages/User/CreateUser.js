@@ -12,6 +12,7 @@ import { BlockContext } from '../../Util/ListProvider';
 import authfetch from '../../Util/authfetch';
 
 export default function CreateUser(props) {
+  const { editId, setEditId } = props;
   const { BlockState } = useContext(BlockContext);
   const [app, setApp] = useState([]);
   const [workflow, setWorkflow] = useState([]);
@@ -78,7 +79,7 @@ export default function CreateUser(props) {
   const savedata = () => {
     const payload = { ...values, group_access: accessData };
     console.log("payload", payload);
-    authfetch('/api/user/create', {
+    authfetch('/api/users/create', {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
@@ -89,6 +90,36 @@ export default function CreateUser(props) {
       if (!!result && !!result.ok) {
         console.log(result);
         if (result.ok) {
+          setEditId(null);
+          props.handelClose();
+          props.requery();
+          //window.location.href = "/user";
+        } else {
+          console.log("err");
+        }
+      } else {
+        console.log("err");
+      }
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  const updatedata = () => {
+    const payload = { ...values, id: editId, group_access: accessData };
+    console.log("payload", payload);
+    authfetch('/api/users/update', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': localStorage.getItem("token")
+      }
+    }).then((result) => {
+      if (!!result && !!result.ok) {
+        console.log(result);
+        if (result.ok) {
+          setEditId(null);
           props.handelClose();
           props.requery();
           //window.location.href = "/user";
@@ -105,18 +136,44 @@ export default function CreateUser(props) {
 
   useEffect(() => {
     if (Object.keys(BlockState.department).length > 0) {
-      console.log(BlockState);
       setApp(BlockState.app.map((elem) => { return { "text": elem.name, "val": elem.id } }));
       setWorkflow(BlockState.workflow.map((elem) => { return { "text": elem.name, "val": elem.id } }));
       setAccess(BlockState.access.map((elem) => { return { "text": elem.name, "val": elem.id } }));
       setDepartment(BlockState.department.map((elem) => { return { "text": elem.name, "val": elem.id } }));
       setGroup(BlockState.group.map((elem) => { return { "text": elem.name, "val": elem.id } }));
+      if (editId !== null) {
+        authfetch(`/api/users/details?id=${editId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': localStorage.getItem("token")
+          }
+        }).then((result) => {
+          console.log("result", result);
+          if (!!result && !!result.ok) {
+            result.json().then(
+              (editDetails) => {
+                setValues({ ...values, firstname: editDetails.firstname, lastname: editDetails.lastname, email: editDetails.email, mobile_no: editDetails.mobile_no, username: "", password: "", user_department_id: editDetails.user_department_id, user_group_id: editDetails.user_group_id });
+                setAccessData(editDetails.group_access);
+              },
+              (err) => {
+                console.log("err");
+              }
+            );
+          } else {
+            console.log("err");
+          }
+        }).catch((err) => {
+          console.log(err);
+        });
+      }
     }
+    console.log("editId", editId);
   }, [BlockState]);
 
   return (
     <>
-      <Box sx={{ m: 3, mb: 1, mt: 2 }}>{console.log(values)}{console.log(accessData)}
+      <Box sx={{ m: 3, mb: 1, mt: 2 }}>
         <Grid
           container
           direction="row"
@@ -131,7 +188,7 @@ export default function CreateUser(props) {
           <Grid item>
             <IconButton
               aria-label="upload picture"
-              onClick={props.handelClose}
+              onClick={() => { setEditId(null); props.handelClose(); }}
               component="span"
             >
               <CloseOutlinedIcon />
@@ -161,6 +218,7 @@ export default function CreateUser(props) {
             placeholder="Enter the first name"
             defaultValue=""
             id="firstName"
+            value={values.firstname}
             onChange={(e) => setValues({ ...values, firstname: e.target.value })}
           />
         </FormControl>
@@ -174,6 +232,7 @@ export default function CreateUser(props) {
             name="lastName"
             placeholder="Enter the last name"
             defaultValue=""
+            value={values.lastname}
             id="lastName"
             onChange={(e) => setValues({ ...values, lastname: e.target.value })}
           />
@@ -188,6 +247,7 @@ export default function CreateUser(props) {
             name="email"
             placeholder="Enter the email id"
             defaultValue=""
+            value={values.email}
             id="email"
             onChange={(e) => setValues({ ...values, email: e.target.value })}
           />
@@ -202,6 +262,7 @@ export default function CreateUser(props) {
             name="contactNo"
             placeholder="+91"
             defaultValue=""
+            value={values.mobile_no}
             id="contactNo"
             onChange={(e) => setValues({ ...values, mobile_no: e.target.value })}
           />
@@ -220,6 +281,7 @@ export default function CreateUser(props) {
             onChange={(e) => setValues({ ...values, user_department_id: e.target.value })}
             optionsVlaue={department}
             defaultValue=""
+            value={values.user_department_id}
             variant="outlined"
           ></CustomSelect>
         </FormControl>
@@ -237,6 +299,7 @@ export default function CreateUser(props) {
             onChange={(event) => { handleGroup(event.target.value); setValues({ ...values, user_group_id: event.target.value }) }}
             optionsVlaue={group}
             defaultValue=""
+            value={values.user_group_id}
             variant="outlined"
           ></CustomSelect>
         </FormControl>
@@ -268,7 +331,8 @@ export default function CreateUser(props) {
                           placeholder={"Enter the value"}
                           onChange={(event) => handleAccess(event, index, 'accessId')}
                           optionsVlaue={access}
-                          defaultValue={elem.accessId}
+                          defaultValue=""
+                          value={Number(elem.accessId)}
                           variant="outlined"
                         ></CustomSelect>
                       </FormControl>
@@ -296,7 +360,7 @@ export default function CreateUser(props) {
             className="btn-small"
             buttonInnerText="Done"
             buttonWidth="100px"
-            onClick={() => savedata()}
+            onClick={() => editId !== null ? updatedata() : savedata()}
           ></Button>
         </Grid>
       </Box>

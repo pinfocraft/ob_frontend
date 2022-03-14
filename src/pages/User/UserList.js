@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AppSidebar from "../../components/AppSidebar/AppSidebar";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import MainContentHeader from "../../components/MainContentHeader/MainContentHeader";
@@ -16,24 +16,54 @@ import Box from "@mui/material/Box";
 import CreateUser from "./CreateUser";
 import { getFirstCapitalLetter } from '../../Util/helper';
 import { ServerAction } from '../../Util/ServerAction';
+import authfetch from '../../Util/authfetch';
+import WarnDialog from '../../Util/WarnDialog';
 
 const BoqListing = () => {
 
   const [rows, setRows] = React.useState([]);
   const [createUserDrawer, setCreateUserDrawer] = React.useState(false);
+  const [editId, setEditId] = useState(null);
+  const [delId, setDelId] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const deleteUser = React.useCallback(
     (id) => () => {
-      setTimeout(() => {
-        setRows((prevRows) => prevRows.filter((row) => row.id !== id));
-      });
+      setDelId(id);
+      setOpen(true);
     },
     []
   );
 
+  const removeAction = () => {
+    authfetch(`/api/users/delete?id=${delId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': localStorage.getItem("token")
+      }
+    }).then((result) => {
+      if (!!result && !!result.ok) {
+        if (result.ok) {
+          requery();
+          setDelId(null);
+          setOpen(false);
+          //setRows((prevRows) => prevRows.filter((row) => row.id !== id));
+        } else {
+          console.log("err");
+        }
+      } else {
+        console.log("err");
+      }
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
   const editUser = React.useCallback(
     (id) => () => {
-      setRows((prevRows) => prevRows.map((row) => console.log(row)));
+      setEditId(id);
+      setCreateUserDrawer(true);
     },
     []
   );
@@ -131,12 +161,13 @@ const BoqListing = () => {
       }
     }).then((result) => {
       console.log("result", result);
+      setEditId(null);
       result.map((elem) => {
         elem.user = `${elem.firstname} ${elem.lastname}`;
         elem.department = elem.user_department;
         elem.contact = elem.mobile_no;
-        elem.created = "09-02-2022";
-        elem.status = "Active";
+        elem.created = "-";
+        elem.status = elem.status ? "Active" : "Inactive";
         return elem;
       });
       setRows(result);
@@ -161,15 +192,22 @@ const BoqListing = () => {
         <div className="boq-listing-content">
           <div className="row">
             <div className="col-12">
-              <Breadcrumb PageName="BOQ Listing" />
+              <Breadcrumb PageName="User Listing" />
             </div>
           </div>
 
           <div className="row">
             <div className="col-6">
-              <MainContentHeader />
+              <MainContentHeader heading="User List" subHeading=" " leadId={true} customerId={true} />
             </div>
             <div className="col align-items-center justify-content-end d-flex">
+              {/*<Button
+                className="btn-small"
+                buttonInnerText="Create group"
+                buttonWidth="150px"
+                onClick={() => window.location.href = "/create-group"}
+                style={{ marginRight: "8px" }}
+              ></Button>*/}
               <Button
                 className="btn-small"
                 buttonInnerText="Create user"
@@ -181,7 +219,7 @@ const BoqListing = () => {
 
           <Drawer anchor={"right"} variant="temporary" open={createUserDrawer}>
             <Box sx={{ width: 450 }}>
-              <CreateUser handelClose={handelRightDrawer} requery={requery} />
+              <CreateUser handelClose={handelRightDrawer} requery={requery} editId={editId} setEditId={setEditId} />
             </Box>
           </Drawer>
 
@@ -207,9 +245,18 @@ const BoqListing = () => {
       {/* footer  */}
       <div className="row">
         <div className="col-12">
-          <Footer />
+          {/*<Footer />*/}
         </div>
       </div>
+      <WarnDialog
+        yes="Remove"
+        no='Cancel'
+        title=""
+        message="Are you sure you want to continue?"
+        onYes={removeAction}
+        open={open}
+        setOpen={setOpen}
+      />
     </>
   );
 };

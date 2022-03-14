@@ -20,7 +20,8 @@ const SignIn = () => {
                 if (payload?.id) {
                     localStorage.setItem("idd", payload.id);
                     localStorage.setItem("token", payload.accessToken);
-                    history.push('/user');
+                    localStorage.setItem("workflow", payload.workflow);
+                    history.push('/Dashboard');
                 } else {
                     console.log("result", result);
                 }
@@ -108,7 +109,7 @@ const SignIn = () => {
                                                         <label htmlFor="paswword">Password</label>
                                                         <span><Link to="forgot-password">Forgot Code?</Link></span>
                                                     </div>
-                                                    <input type="text" className="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" {...register('password', { required: true })} />
+                                                    <input type="password" className="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" {...register('password', { required: true })} />
                                                     {errors?.password && <p>This field is required.</p>}
                                                 </div>
 
@@ -117,13 +118,13 @@ const SignIn = () => {
                                                 </div>
                                             </div>
                                         </form>
-                                        <div className="signin-card-footer">
+                                        {/*<div className="signin-card-footer">
                                             <p>New on our platform? <Link to="">Create an account</Link></p>
                                             <div className='below-footer'>
                                                 <h5 className='or-footer'>OR</h5>
                                                 <p>Contact Office Banao System Admin</p>
                                             </div>
-                                        </div>
+                                        </div>*/}
                                     </div>
                                 </div>
 
